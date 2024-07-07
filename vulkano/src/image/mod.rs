@@ -982,7 +982,6 @@ vulkan_bitflags! {
     /// Flags specifying additional properties of an image.
     ImageCreateFlags = ImageCreateFlags(u32);
 
-    /* TODO: enable
     /// The image will be backed by sparse memory binding (through queue commands) instead of
     /// regular binding (through [`bind_memory`]).
     ///
@@ -990,9 +989,8 @@ vulkan_bitflags! {
     ///
     /// [`bind_memory`]: sys::RawImage::bind_memory
     /// [`sparse_binding`]: crate::device::DeviceFeatures::sparse_binding
-    SPARSE_BINDING = SPARSE_BINDING,*/
+    SPARSE_BINDING = SPARSE_BINDING,
 
-    /* TODO: enable
     /// The image can be used without being fully resident in memory at the time of use.
     ///
     /// This requires the `sparse_binding` flag as well.
@@ -1011,9 +1009,8 @@ vulkan_bitflags! {
     /// [`sparse_residency4_samples`]: crate::device::DeviceFeatures::sparse_residency4_samples
     /// [`sparse_residency8_samples`]: crate::device::DeviceFeatures::sparse_residency8_samples
     /// [`sparse_residency16_samples`]: crate::device::DeviceFeatures::sparse_residency16_samples
-    SPARSE_RESIDENCY = SPARSE_RESIDENCY,*/
+    SPARSE_RESIDENCY = SPARSE_RESIDENCY,
 
-    /* TODO: enable
     /// The buffer's memory can alias with another image or a different part of the same image.
     ///
     /// This requires the `sparse_binding` flag as well.
@@ -1021,7 +1018,7 @@ vulkan_bitflags! {
     /// The [`sparse_residency_aliased`] feature must be enabled on the device.
     ///
     /// [`sparse_residency_aliased`]: crate::device::DeviceFeatures::sparse_residency_aliased
-    SPARSE_ALIASED = SPARSE_ALIASED,*/
+    SPARSE_ALIASED = SPARSE_ALIASED,
 
     /// For non-multi-planar formats, whether an image view wrapping the image can have a
     /// different format.
