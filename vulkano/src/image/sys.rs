@@ -347,8 +347,7 @@ impl RawImage {
         )
     }
 
-    #[allow(dead_code)] // Remove when sparse memory is implemented
-    fn get_sparse_memory_requirements(&self) -> Vec<SparseImageMemoryRequirements> {
+    pub fn get_sparse_memory_requirements(&self) -> Vec<SparseImageMemoryRequirements> {
         let device = &self.device;
 
         unsafe {
