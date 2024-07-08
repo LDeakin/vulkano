@@ -176,7 +176,7 @@ impl Image {
         Ok(Arc::new(image))
     }
 
-    fn from_raw(inner: RawImage, memory: ImageMemory, layout: ImageLayout) -> Self {
+    pub fn from_raw(inner: RawImage, memory: ImageMemory, layout: ImageLayout) -> Self {
         let aspects = inner.format().aspects();
         let aspect_list: SmallVec<[ImageAspect; 4]> = aspects.into_iter().collect();
         let mip_level_size = inner.array_layers() as DeviceSize;
