@@ -347,6 +347,12 @@ impl RawImage {
         )
     }
 
+    /// Retrieves the sparse memory requirements for the image.
+    ///
+    /// This function returns a vector of `SparseImageMemoryRequirements` structures. Each
+    /// structure describes the sparse memory requirements for a group of aspects of the image. If
+    /// the image was not created with `VK_IMAGE_CREATE_SPARSE_RESIDENCY_BIT` then the returned
+    /// vector will be empty.
     pub fn get_sparse_memory_requirements(&self) -> Vec<SparseImageMemoryRequirements> {
         let device = &self.device;
 
