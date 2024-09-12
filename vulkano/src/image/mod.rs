@@ -147,6 +147,17 @@ impl Image {
         // TODO: adjust the code below to make this safe
         assert!(!create_info.flags.intersects(ImageCreateFlags::DISJOINT));
 
+        // TODO: Support sparse binding
+        assert!(!create_info
+            .flags
+            .intersects(ImageCreateFlags::SPARSE_ALIASED));
+        assert!(!create_info
+            .flags
+            .intersects(ImageCreateFlags::SPARSE_BINDING));
+        assert!(!create_info
+            .flags
+            .intersects(ImageCreateFlags::SPARSE_RESIDENCY));
+
         let allocation_type = create_info.tiling.into();
         let raw_image =
             RawImage::new(allocator.device().clone(), create_info).map_err(|err| match err {
@@ -992,6 +1003,8 @@ vulkan_bitflags! {
     /// The image will be backed by sparse memory binding (through queue commands) instead of
     /// regular binding (through [`bind_memory`]).
     ///
+    /// **This flag is currently unsupported by [`Image::new`]**.
+    ///
     /// The [`sparse_binding`] feature must be enabled on the device.
     ///
     /// [`bind_memory`]: sys::RawImage::bind_memory
@@ -999,6 +1012,8 @@ vulkan_bitflags! {
     SPARSE_BINDING = SPARSE_BINDING,
 
     /// The image can be used without being fully resident in memory at the time of use.
+    ///
+    /// **This flag is currently unsupported by [`Image::new`]**.
     ///
     /// This requires the `sparse_binding` flag as well.
     ///
@@ -1019,6 +1034,8 @@ vulkan_bitflags! {
     SPARSE_RESIDENCY = SPARSE_RESIDENCY,
 
     /// The buffer's memory can alias with another image or a different part of the same image.
+    ///
+    /// **This flag is currently unsupported by [`Image::new`]**.
     ///
     /// This requires the `sparse_binding` flag as well.
     ///
